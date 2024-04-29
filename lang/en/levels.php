@@ -159,7 +159,7 @@ return [
   'app_secret'             => 'App Secret',
   'client_id'              => 'Client ID',
    'client_secret'          =>  'Client secret',
-   'hindi'                  => 'हिन्दी',
+   'hindi'                  => 'हिन�?दी',
    'arabic'                 => 'عربي',
    'franch'                 => 'Franch',
    'spanish'                => 'Spanish',
@@ -361,5 +361,6 @@ return [
     'enter_map_link'          =>'Enter Map Link',
     'latest_services'         =>'Latest Services',
     'wallet_use_activation'   =>'Wallet Use Activation',
-
+    'distance_type'   =>'Distance Type',
+    'distance_range'   =>'Distance Range',
 ];
