@@ -362,5 +362,10 @@ return [
     'latest_services'         =>'Latest Services',
     'wallet_use_activation'   =>'Wallet Use Activation',
     'distance_type'   =>'Distance Type',
-    'distance_range'   =>'Distance Range',
+    'distance'   =>'Distance',
+    'city_wise'   =>'City wise',
+    'distance_wise'   =>'Distance wise',
+    'fixed'   =>'Fixed',
+    'above'   =>'Above',
+    'below'   =>'Below',
 ];

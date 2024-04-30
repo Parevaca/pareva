@@ -75,6 +75,6 @@ return [
     'app_secret'                        => 'Enter App secret',
     'client_id'                         => 'Enter client ID',
     'client_secret'                     => 'Enter client secret',
-
+    'Enter_Kilometer'   =>'Enter Kilometer',
 
 ];

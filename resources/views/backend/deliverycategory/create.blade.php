@@ -31,6 +31,18 @@
                     <h2 class="pageheader-title">{{ __('deliverycategory.create_deliverycategory') }}</h2>
                     <form action="{{route('delivery-category.store')}}"  method="POST" enctype="multipart/form-data" id="basicform">
                         @csrf
+                        
+                        <div class="form-group">
+                            <label for="status">{{ __('levels.type') }}</label>
+                            <select name="catefory_type" class="form-control">
+                                <option value="0">{{ __('levels.city_wise') }}</option>
+                                <option value="1">{{ __('levels.distance_wise') }}</option>
+                            </select>
+                            @error('catefory_type')
+                                <small class="text-danger mt-2">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        
                         <div class="form-group">
                             <label for="title">{{ __('levels.title') }}</label> <span class="text-danger">*</span>
                             <input id="title" type="text" name="title" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_title') }}" autocomplete="off" class="form-control" value="{{old('title')}}" require>

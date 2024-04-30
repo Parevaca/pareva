@@ -61,6 +61,9 @@ class DeliveryChargeRepository implements DeliveryChargeInterface{
             $delivery_charge->next_day     = $request->next_day;
             $delivery_charge->sub_city     = $request->sub_city;
             $delivery_charge->outside_city = $request->outside_city;
+            $delivery_charge->delivery_type = $request->delivery_type;
+            $delivery_charge->distance_type = $request->distance_type;
+            $delivery_charge->distance = $request->distance;
             $delivery_charge->position     = $request->position;
             $delivery_charge->status       = $request->status;
             $delivery_charge->save();
@@ -84,6 +87,9 @@ class DeliveryChargeRepository implements DeliveryChargeInterface{
             $delivery_charge->next_day     = $request->next_day;
             $delivery_charge->sub_city     = $request->sub_city;
             $delivery_charge->outside_city = $request->outside_city;
+            $delivery_charge->delivery_type = $request->delivery_type;
+            $delivery_charge->distance_type = $request->distance_type;
+            $delivery_charge->distance = $request->distance;
             $delivery_charge->position     = $request->position;
             $delivery_charge->status       = $request->status;
             $delivery_charge->save();

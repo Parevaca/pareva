@@ -44,6 +44,7 @@
                             <thead>
                                 <tr>
                                     <th>{{ __('levels.id') }}</th>
+                                    <th>{{ __('levels.type') }}</th>
                                     <th>{{ __('levels.title') }}</th>
                                     <th>{{ __('levels.status') }}</th>
                                     <th>{{ __('levels.position') }}</th>
@@ -57,8 +58,14 @@
                                 @foreach($deliverycategorys as $deliverycategory)
                                 <tr>
                                     <td>{{$i++}}</td>
+                                    <td>
+                                        @if ($deliverycategory->category_type == 0)
+                                            {{ __('levels.city_wise') }}
+                                        @else
+                                            {{ __('levels.distance_wise') }}
+                                        @endif
+                                    </td>
                                     <td>{{$deliverycategory->title}}</td>
-
                                     <td>
                                         {!! $deliverycategory->my_status !!}
                                     </td>

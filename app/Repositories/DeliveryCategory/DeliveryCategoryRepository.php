@@ -18,6 +18,7 @@ class DeliveryCategoryRepository implements DeliveryCategoryInterface{
         try {
             $Deliverycategory               = new Deliverycategory();
             $Deliverycategory->title        = $request->title;
+            $Deliverycategory->category_type        = $request->category_type;
             $Deliverycategory->status       = $request->status;
             $Deliverycategory->position     = $request->position;
             $Deliverycategory->save();
@@ -37,6 +38,7 @@ class DeliveryCategoryRepository implements DeliveryCategoryInterface{
         try {
             $Deliverycategory                   = Deliverycategory::find($request->id);
             $Deliverycategory->title            = $request->title;
+            $Deliverycategory->category_type            = $request->category_type;
             $Deliverycategory->status           = $request->status;
             $Deliverycategory->position         = $request->position;
             $Deliverycategory->save();

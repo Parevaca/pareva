@@ -32,6 +32,18 @@
                         @method('PUT')
                         @csrf
                         <input type="hidden" name="id" id="id" value="{{$deliverycategory->id}}">
+                        
+                        <div class="form-group">
+                            <label for="status">{{ __('levels.type') }}</label>
+                            <select name="catefory_type" class="form-control">
+                                <option value="0" {{ (old('status',$deliverycategory->category_type) == 0) ? 'selected' : '' }}>{{ __('levels.city_wise') }}</option>
+                                <option value="1" {{ (old('status',$deliverycategory->category_type) == 1) ? 'selected' : '' }}>{{ __('levels.distance_wise') }}</option>
+                            </select>
+                            @error('catefory_type')
+                                <small class="text-danger mt-2">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        
                         <div class="form-group">
                             <label for="title">{{ __('levels.title') }}</label>	<span class="text-danger">*</span>
                             <input id="title" type="text" name="title" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_title') }}" autocomplete="off" class="form-control @error('title') is-invalid @enderror " value="{{ old('title',$deliverycategory->title) }}" require>
