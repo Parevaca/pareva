@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-    {{ __('delivery_charge.title') }} {{ __('levels.list') }}
+{{ __('delivery_charge.title') }} {{ __('levels.list') }}
 @endsection
 @section('maincontent')
 <!-- wrapper  -->
@@ -36,7 +36,7 @@
                                 <select id="category" name="category" class="form-control @error('category') is-invalid @enderror">
                                     <option selected disabled>{{ __('menus.select') }} </option>
                                     @foreach($categories as $category)
-                                        <option {{ (old('category',$request->category) == $category->id) ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->title }}</option>
+                                    <option {{ (old('category',$request->category) == $category->id) ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->title }}</option>
                                     @endforeach
                                 </select>
                                 @error('category')
@@ -91,6 +91,9 @@
                                     <th>{{ __('levels.next_day') }}</th>
                                     <th>{{ __('levels.sub_city') }}</th>
                                     <th>{{ __('levels.outside_city') }}</th>
+                                    <th>{{ __('levels.distance_type') }}</th>
+                                    <th>{{ __('levels.distance') }}</th>
+                                    <th>{{ __('levels.delivery_charge') }}</th>
                                     @if(hasPermission('delivery_charge_update') == true || hasPermission('delivery_charge_delete') == true)
                                     <th>{{ __('levels.actions') }}</th>
                                     @endif
@@ -109,21 +112,36 @@
                                     <td>{{settings()->currency}}{{$delivery_charge->same_day}}</td>
                                     <td>{{settings()->currency}}{{$delivery_charge->sub_city}}</td>
                                     <td>{{settings()->currency}}{{$delivery_charge->outside_city}}</td>
+                                    @if($delivery_charge->delivery_type == 0)
+                                        <td>--</td>
+                                    @else
+                                        <td>
+                                            @if($delivery_charge->distance_type == 0)
+                                                {{ __('levels.fixed') }}
+                                            @elseif($delivery_charge->distance_type == 1)
+                                                {{ __('levels.below') }}
+                                            @else
+                                                {{ __('levels.above') }}
+                                            @endif
+                                        </td>
+                                    @endif
+                                    <td>{{$delivery_charge->delivery_type == 1 ? $delivery_charge->distance : "--"}}</td>
+                                    <td>{{$delivery_charge->delivery_type == 1 ? settings()->currency.$delivery_charge->distance_charge : "--"}}</td>
                                     @if(hasPermission('delivery_charge_update') == true || hasPermission('delivery_charge_delete') == true)
                                     <td>
                                         <div class="row">
                                             <button tabindex="-1" data-toggle="dropdown" type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"><span class="sr-only">Toggle Dropdown</span></button>
                                             <div class="dropdown-menu">
                                                 @if(hasPermission('delivery_charge_update') == true )
-                                                    <a href="{{route('delivery-charge.edit',$delivery_charge->id)}}" class="dropdown-item"><i class="fas fa-edit" aria-hidden="true"></i> {{ __('levels.edit') }}</a>
+                                                <a href="{{route('delivery-charge.edit',$delivery_charge->id)}}" class="dropdown-item"><i class="fas fa-edit" aria-hidden="true"></i> {{ __('levels.edit') }}</a>
                                                 @endif
                                                 @if(hasPermission('delivery_charge_delete') == true)
-                                                    <form id="delete" value="Test" action="{{route('delivery-charge.delete',$delivery_charge->id)}}" method="POST" data-title="{{ __('delete.delivery_charge') }}">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <input type="hidden" name="" value="Delivery Charge" id="deleteTitle">
-                                                        <button type="submit" class="dropdown-item"><i class="fa fa-trash" aria-hidden="true"></i> {{ __('levels.delete') }}</button>
-                                                    </form>
+                                                <form id="delete" value="Test" action="{{route('delivery-charge.delete',$delivery_charge->id)}}" method="POST" data-title="{{ __('delete.delivery_charge') }}">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <input type="hidden" name="" value="Delivery Charge" id="deleteTitle">
+                                                    <button type="submit" class="dropdown-item"><i class="fa fa-trash" aria-hidden="true"></i> {{ __('levels.delete') }}</button>
+                                                </form>
                                                 @endif
                                             </div>
                                         </div>

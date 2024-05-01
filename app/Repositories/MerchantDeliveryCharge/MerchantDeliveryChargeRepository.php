@@ -33,6 +33,10 @@ class MerchantDeliveryChargeRepository implements MerchantDeliveryChargeInterfac
                 $deliveryCharge->next_day            = $request->next_day;
                 $deliveryCharge->sub_city            = $request->sub_city;
                 $deliveryCharge->outside_city        = $request->outside_city;
+                $delivery_charge->delivery_type = $request->delivery_type;
+                $delivery_charge->distance_type = $request->distance_type;
+                $delivery_charge->distance = $request->distance;
+                $delivery_charge->distance_charge = $request->distance_charge;
                 $deliveryCharge->status              = $request->status;
                 $deliveryCharge->save();
                  return true;
@@ -55,6 +59,10 @@ class MerchantDeliveryChargeRepository implements MerchantDeliveryChargeInterfac
                 $deliveryCharge->next_day            = $request->next_day;
                 $deliveryCharge->sub_city            = $request->sub_city;
                 $deliveryCharge->outside_city        = $request->outside_city;
+                $delivery_charge->delivery_type = $request->delivery_type;
+                $delivery_charge->distance_type = $request->distance_type;
+                $delivery_charge->distance = $request->distance;
+                $delivery_charge->distance_charge = $request->distance_charge;
                 $deliveryCharge->status              = $request->status;
                 $deliveryCharge->save();
 

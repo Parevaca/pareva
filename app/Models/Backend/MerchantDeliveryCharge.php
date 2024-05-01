@@ -14,7 +14,7 @@ class MerchantDeliveryCharge extends Model
     use HasFactory,LogsActivity;
 
     protected $table = 'merchant_delivery_charges';
-    protected $fillable = ['merchant_id','status','delivery_charge_id','weight','same_day','next_day','sub_city','outside_city'];
+    protected $fillable = ['merchant_id','status','delivery_charge_id','weight','same_day','next_day','sub_city','outside_city','delivery_type','distance_type','distance','distance_charge'];
 
 
     public function getActivitylogOptions(): LogOptions
@@ -27,7 +27,11 @@ class MerchantDeliveryCharge extends Model
             'same_day',
             'next_day',
             'sub_city',
-            'outside_city'
+            'outside_city',
+            'delivery_type',
+            'distance_type',
+            'distance',
+            'distance_charge'
         ];
         return LogOptions::defaults()
         ->useLogName('MerchantDeliveryCharge')

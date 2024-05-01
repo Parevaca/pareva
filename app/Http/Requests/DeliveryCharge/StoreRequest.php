@@ -26,6 +26,7 @@ class StoreRequest extends FormRequest {
             return [
                 'distance_type' => ['required'],
                 'distance' => ['required', 'numeric'],
+                'distance_charge' => ['required', 'numeric'],
                 'position' => ['required', 'numeric'],
                 'status' => ['required', 'numeric'],
             ];

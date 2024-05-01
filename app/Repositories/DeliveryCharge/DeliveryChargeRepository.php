@@ -64,6 +64,7 @@ class DeliveryChargeRepository implements DeliveryChargeInterface{
             $delivery_charge->delivery_type = $request->delivery_type;
             $delivery_charge->distance_type = $request->distance_type;
             $delivery_charge->distance = $request->distance;
+            $delivery_charge->distance_charge = $request->distance_charge;
             $delivery_charge->position     = $request->position;
             $delivery_charge->status       = $request->status;
             $delivery_charge->save();
@@ -90,6 +91,7 @@ class DeliveryChargeRepository implements DeliveryChargeInterface{
             $delivery_charge->delivery_type = $request->delivery_type;
             $delivery_charge->distance_type = $request->distance_type;
             $delivery_charge->distance = $request->distance;
+            $delivery_charge->distance_charge = $request->distance_charge;
             $delivery_charge->position     = $request->position;
             $delivery_charge->status       = $request->status;
             $delivery_charge->save();
