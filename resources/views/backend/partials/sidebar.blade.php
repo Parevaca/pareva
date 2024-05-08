@@ -168,11 +168,11 @@
         @endif
 
         @if (hasPermission('wallet_request_read'))
-            <li class="nav-item ">
+            <!--<li class="nav-item ">
                 <a class="nav-link {{ request()->is('admin/wallet-request*') ? 'active' : '' }}"
                     href="{{ route('wallet.request.index') }}"><i
                         class="fa fa-wallet"></i>{{ __('parcel.wallet_request') }}</a>
-            </li>
+            </li>-->
         @endif
 
 

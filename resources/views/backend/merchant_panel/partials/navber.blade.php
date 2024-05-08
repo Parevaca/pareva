@@ -209,9 +209,9 @@
                                     <li class="nav-item dropdown connection mt-lg-3 mt-md-0 d-lg-block">
                                         <a class="dropdown-item" href="{{ route('merchant-panel.news-offer.index') }}" data-toggle="tooltip" data-placement="top" title="{{ __('news_offer.title') }}"> <i class="fas fa-newspaper font-20"></i> </a>
                                     </li>
-                                    <li class="nav-item dropdown connection mt-lg-3 mt-md-0 d-lg-block">
+                                    <!--<li class="nav-item dropdown connection mt-lg-3 mt-md-0 d-lg-block">
                                         <button class="btn btn-sm btn-primary"  > {{ __('merchant.wallet') }} : {{ settings()->currency }} {{ Auth::user()->merchant->wallet_balance }} </button>
-                                    </li>
+                                    </li>-->
                                     <li class="nav-item dropdown nav-user d-lg-block">
                                         <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <img src="{{Auth::user()->image}}" alt="" class="user-avatar-md rounded-circle">
