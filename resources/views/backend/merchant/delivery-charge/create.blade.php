@@ -30,7 +30,7 @@
                         <label for="delivery_charge_id">{{ __('levels.category') }}</label> <span class="text-danger">*</span>
                         <select id="deliveryChargeID" name="delivery_charge_id" class="form-control @error('delivery_charge_id') is-invalid @enderror" data-url="{{ route('merchant.deliveryCharge.deliveryChargeInfo') }}">
                             @foreach($deliveryCharges as $deliverycharge)
-                                <option value="{{ $deliverycharge->id }}" {{ (old('delivery_charge_id') == $deliverycharge->id) ? 'selected' : '' }}>{{ $deliverycharge->category->title }} @if(isset($deliverycharge->weight)) ( {{ $deliverycharge->weight }} ) @endif</option>
+                                <option value="{{ $deliverycharge->id }}" data-type="{{$deliverycharge->delivery_type}}" {{ (old('delivery_charge_id') == $deliverycharge->id) ? 'selected' : '' }}>{{ $deliverycharge->category->title }} @if(isset($deliverycharge->delivery_type) && $deliverycharge->delivery_type == 1) ( {{ $deliverycharge->distance }} ) @endif @if(isset($deliverycharge->weight) && $deliverycharge->weight > 0) ( {{ $deliverycharge->weight }} ) @endif</option>
                             @endforeach
                         </select>
                         @error('delivery_charge_id')

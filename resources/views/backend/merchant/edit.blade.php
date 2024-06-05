@@ -184,7 +184,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <!--<div class="col-md-6">
                                 <div class="form-group ">
                                     <label for="payment_period">{{ __('levels.wallet_use_activation') }}</label>
                                      <select name="wallet_use_activation" class="form-control select2">
@@ -192,7 +192,7 @@
                                           <option value="{{ App\Enums\Status::INACTIVE }}" @selected($merchant->wallet_use_activation == App\Enums\Status::INACTIVE)>{{ __('levels.inactive') }}</option>
                                      </select>
                                 </div>
-                            </div>
+                            </div>-->
 
                             
                             <div class="col-md-6">

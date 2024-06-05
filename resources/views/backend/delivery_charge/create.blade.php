@@ -64,6 +64,13 @@
                                         <small class="text-danger mt-2">{{ $message }}</small>
                                     @enderror
                                 </div>
+                                <div class="form-group" id="distance_charge">
+                                    <label for="position">{{ __('levels.delivery_charge') }}</label> <span class="text-danger">*</span>
+                                    <input id="distance_charge" type="text" name="distance_charge" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_delivery_charge') }}" onpaste="return false;" ondrop="return false;" onblur="return isNumberKey(event);" onkeypress="return isNumberKey(event);" autocomplete="off" class="form-control" value="{{old('distance_charge')}}" require>
+                                    @error('distance_charge')
+                                        <small class="text-danger mt-2">{{ $message }}</small>
+                                    @enderror
+                                </div>
                                 <div class="form-group" id="weight_group">
                                     <label for="weight">{{ __('levels.weight') }}</label> <span class="text-danger">*</span>
                                     <input id="weight" type="number" name="weight" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_weight') }}" autocomplete="off" class="form-control" value="{{old('weight')}}" require>

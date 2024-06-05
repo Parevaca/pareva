@@ -477,7 +477,7 @@ class ParcelRepository implements ParcelInterface {
             DB::commit();
             if(SmsSendSettingHelper(SmsSendStatus::PARCEL_CREATE)) {
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
-                    $msg = 'প্রিয় '.$parcel->customer_name.', আপনার পার্সেল সফলভাবে তৈরি করা হয়েছে । আপনার পার্সেলের আইডি ' . $parcel->tracking_id . ' পার্সেল পাঠিয়েছেন ' . $parcel->merchant->business_name . ' (' . $parcel->cash_collection . ' টাকা)';
+                    $msg = 'প�?রিয় '.$parcel->customer_name.', আপনার পার�?সেল সফলভাবে তৈরি করা হয়েছে । আপনার পার�?সেলের আইডি ' . $parcel->tracking_id . ' পার�?সেল পাঠিয়েছেন ' . $parcel->merchant->business_name . ' (' . $parcel->cash_collection . ' টাকা)';
 
                 else:
                     $msg = 'Dear '.$parcel->customer_name.', Your parcel is successfully created. Your parcel with ID ' . $parcel->tracking_id . ' parcel from ' . $parcel->merchant->business_name . ' (' . $parcel->cash_collection . ')';
@@ -801,7 +801,7 @@ class ParcelRepository implements ParcelInterface {
             $parcel->save();
             if($request->send_sms_pickuman == 'on'){
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
-                    $msg = 'প্রিয় '.$pickupAsisgn->pickupman->user->name.', '.dateFormat($parcel->pickup_date).' তারিখের মধ্যে '.'পার্সেল পিকআপ করুন । পার্সেল আইডি '.$parcel->tracking_id .' । পার্সেল পাঠিয়েছে ('.$parcel->merchant->business_name.','.$parcel->merchant->user->mobile.','.$parcel->merchant->address.') - '.settings()->name;
+                    $msg = 'প�?রিয় '.$pickupAsisgn->pickupman->user->name.', '.dateFormat($parcel->pickup_date).' তারিখের মধ�?যে '.'পার�?সেল পিকআপ কর�?ন । পার�?সেল আইডি '.$parcel->tracking_id .' । পার�?সেল পাঠিয়েছে ('.$parcel->merchant->business_name.','.$parcel->merchant->user->mobile.','.$parcel->merchant->address.') - '.settings()->name;
                 else:
                     $msg = 'Dear '.$pickupAsisgn->pickupman->user->name.', Please pickup parcel with ID '.$parcel->tracking_id .' parcel from ('.$parcel->merchant->business_name.','.$parcel->merchant->user->mobile.','.$parcel->merchant->address.') within '.dateFormat($parcel->pickup_date).' -'.settings()->name;
                 endif;
@@ -818,7 +818,7 @@ class ParcelRepository implements ParcelInterface {
 
             if($request->send_sms_merchant  == 'on'){
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
-                    $msg = 'সম্মানিত '.$parcel->merchant->business_name.',  আপনার পার্সেল আইডি -'.$parcel->tracking_id .' । '.settings()->name.' থেকে পিকআপ ম্যান নিয়োগ করা হয়েছে । প্রয়োজনে  পিকআপ ম্যান এর সাথে যোগাযোগ করুন । নিয়োগ দিয়েছেন '.$pickupAsisgn->pickupman->user->name.', '.$pickupAsisgn->pickupman->user->mobile.' । ট্র্যাক করুন: '.url('/').' -'.settings()->name;
+                    $msg = 'সম�?মানিত '.$parcel->merchant->business_name.',  আপনার পার�?সেল আইডি -'.$parcel->tracking_id .' । '.settings()->name.' থেকে পিকআপ ম�?যান নিয়োগ করা হয়েছে । প�?রয়োজনে  পিকআপ ম�?যান �?র সাথে যোগাযোগ কর�?ন । নিয়োগ দিয়েছেন '.$pickupAsisgn->pickupman->user->name.', '.$pickupAsisgn->pickupman->user->mobile.' । ট�?র�?যাক কর�?ন: '.url('/').' -'.settings()->name;
                     $response =  app(SmsService::class)->sendSms($parcel->merchant->user->mobile,$msg);
                 else:
                     $msg = 'Dear '.$parcel->merchant->business_name.', your  parcel with ID '.$parcel->tracking_id .' Pickup man assign from '.settings()->name.'. Assign by '.$pickupAsisgn->pickupman->user->name.', '.$pickupAsisgn->pickupman->user->mobile.' Track here: '.url('/').' -'.settings()->name;
@@ -895,7 +895,7 @@ class ParcelRepository implements ParcelInterface {
 
             if($request->send_sms_pickuman == 'on'){
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
-                    $msg = 'প্রিয় '.$pickupReshcedule->pickupman->user->name.', '.dateFormat($parcel->pickup_date).' তারিখের মধ্যে '. 'পার্সেল পিকআপ করুন । পার্সেল আইডি - '.$parcel->tracking_id.' । পার্সেল পাঠিয়েছে ('.$parcel->merchant->business_name.','.$parcel->merchant->user->mobile.','.$parcel->merchant->address.')'.' - '.settings()->name;
+                    $msg = 'প�?রিয় '.$pickupReshcedule->pickupman->user->name.', '.dateFormat($parcel->pickup_date).' তারিখের মধ�?যে '. 'পার�?সেল পিকআপ কর�?ন । পার�?সেল আইডি - '.$parcel->tracking_id.' । পার�?সেল পাঠিয়েছে ('.$parcel->merchant->business_name.','.$parcel->merchant->user->mobile.','.$parcel->merchant->address.')'.' - '.settings()->name;
                     $response =  app(SmsService::class)->sendSms($pickupReshcedule->pickupman->user->mobile,$msg);
                 else:
                     $msg = 'Dear '.$pickupReshcedule->pickupman->user->name.', Please pickup parcel with ID '.$parcel->tracking_id .' parcel from ('.$parcel->merchant->business_name.','.$parcel->merchant->user->mobile.','.$parcel->merchant->address.') within '.dateFormat($parcel->pickup_date).' -'.settings()->name;
@@ -906,7 +906,7 @@ class ParcelRepository implements ParcelInterface {
             if($request->send_sms_merchant  == 'on'){
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
 
-                    $msg = 'সম্মানিত '.$parcel->merchant->business_name.', আপনার পার্সেল আইডি - '.$parcel->tracking_id .' , '.settings()->name.' থেকে পিকআপ ম্যান পুনরায় নিয়োগ করা হয়েছে । প্রয়োজনে  পিকআপ ম্যান এর সাথে যোগাযোগ করুন । নিয়োগ দিয়েছেন '.$pickupReshcedule->pickupman->user->name.', '.$pickupReshcedule->pickupman->user->mobile.' ট্র্যাক করুন: '.url('/').' -'.settings()->name;
+                    $msg = 'সম�?মানিত '.$parcel->merchant->business_name.', আপনার পার�?সেল আইডি - '.$parcel->tracking_id .' , '.settings()->name.' থেকে পিকআপ ম�?যান প�?নরায় নিয়োগ করা হয়েছে । প�?রয়োজনে  পিকআপ ম�?যান �?র সাথে যোগাযোগ কর�?ন । নিয়োগ দিয়েছেন '.$pickupReshcedule->pickupman->user->name.', '.$pickupReshcedule->pickupman->user->mobile.' ট�?র�?যাক কর�?ন: '.url('/').' -'.settings()->name;
                     $response =  app(SmsService::class)->sendSms($parcel->merchant->user->mobile,$msg);
                 else:
                     $msg = 'Dear'.$parcel->merchant->business_name.', your  parcel with ID '.$parcel->tracking_id .' Pickup man assign from '.settings()->name.'. Assign by'.$pickupReshcedule->pickupman->user->name.', '.$pickupReshcedule->pickupman->user->mobile.' Track here: '.url('/').' -'.settings()->name;
@@ -1016,7 +1016,7 @@ class ParcelRepository implements ParcelInterface {
 
                 if($request->send_sms == 'on'){
                     if(session()->has('locale') && session()->get('locale') == 'bn'):
-                        $msg = 'প্রিয় '.$parcel->customer_name.', পার্সেল আইডি - '.$parcel->tracking_id .' ।  পার্সেলটি ডেলিভারির জন্য ডেলিভারি ম্যান  নিয়োগ করা হয়েছে ('.$deliveryMan->deliveryMan->user->name.', '.$deliveryMan->deliveryMan->user->mobile.') । পার্সেল পাঠিয়েছেন ('.$parcel->merchant->business_name.') পার্সেলের পরিষোদ মুল্য ('.$parcel->cash_collection.') টাকা । ট্র্যাক করুন:'.url('/').'  -'.settings()->name;
+                        $msg = 'প�?রিয় '.$parcel->customer_name.', পার�?সেল আইডি - '.$parcel->tracking_id .' ।  পার�?সেলটি ডেলিভারির জন�?য ডেলিভারি ম�?যান  নিয়োগ করা হয়েছে ('.$deliveryMan->deliveryMan->user->name.', '.$deliveryMan->deliveryMan->user->mobile.') । পার�?সেল পাঠিয়েছেন ('.$parcel->merchant->business_name.') পার�?সেলের পরিষোদ ম�?ল�?য ('.$parcel->cash_collection.') টাকা । ট�?র�?যাক কর�?ন:'.url('/').'  -'.settings()->name;
                     else:
                         $msg = 'Dear '.$parcel->customer_name.', parcel with ID '.$parcel->tracking_id .' from ('.$parcel->merchant->business_name.') TK('.$parcel->cash_collection.') delivery man assing by '.$deliveryMan->deliveryMan->user->name.', '.$deliveryMan->deliveryMan->user->mobile.'. Track here:'.url('/').'  -'.settings()->name;
                     endif;
@@ -1076,7 +1076,7 @@ class ParcelRepository implements ParcelInterface {
             if($request->send_sms == 'on'){
 
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
-                    $msg = 'প্রিয় '.$parcel->customer_name.', পার্সেল আইডি - '.$parcel->tracking_id .' ।  পার্সেলটি ডেলিভারির জন্য ডেলিভারি ম্যান  নিয়োগ করা হয়েছে ('.$deliverymanAssign->deliveryMan->user->name.', '.$deliverymanAssign->deliveryMan->user->mobile.') । পার্সেল পাঠিয়েছেন ('.$parcel->merchant->business_name.') পার্সেলের পরিষোদ মুল্য ('.$parcel->cash_collection.') টাকা । ট্র্যাক করুন:'.url('/').'  -'.settings()->name;
+                    $msg = 'প�?রিয় '.$parcel->customer_name.', পার�?সেল আইডি - '.$parcel->tracking_id .' ।  পার�?সেলটি ডেলিভারির জন�?য ডেলিভারি ম�?যান  নিয়োগ করা হয়েছে ('.$deliverymanAssign->deliveryMan->user->name.', '.$deliverymanAssign->deliveryMan->user->mobile.') । পার�?সেল পাঠিয়েছেন ('.$parcel->merchant->business_name.') পার�?সেলের পরিষোদ ম�?ল�?য ('.$parcel->cash_collection.') টাকা । ট�?র�?যাক কর�?ন:'.url('/').'  -'.settings()->name;
                 else:
                     $msg = 'Dear '.$parcel->customer_name.', parcel with ID '.$parcel->tracking_id .' from ('.$parcel->merchant->business_name.') TK('.$parcel->cash_collection.') delivery man assing by '.$deliverymanAssign->deliveryMan->user->name.', '.$deliverymanAssign->deliveryMan->user->mobile.'. Track here:'.url('/').'  -'.settings()->name;
                 endif;
@@ -1116,7 +1116,7 @@ class ParcelRepository implements ParcelInterface {
             $parcel->save();
             if($request->send_sms == 'on'){
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
-                    $msg = 'প্রিয় '.$parcel->customer_name.', পার্সেল আইডি - '.$parcel->tracking_id .' ।  পার্সেলটি ডেলিভারির জন্য পূনরায় ডেলিভারি ম্যান  নিয়োগ করা হয়েছে ('.$deliveryReschedule->deliveryMan->user->name.', '.$deliveryReschedule->deliveryMan->user->mobile.') । পার্সেল পাঠিয়েছেন ('.$parcel->merchant->business_name.') পার্সেলের পরিষোদ মুল্য ('.$parcel->cash_collection.') টাকা । ট্র্যাক করুন:'.url('/').'  -'.settings()->name;
+                    $msg = 'প�?রিয় '.$parcel->customer_name.', পার�?সেল আইডি - '.$parcel->tracking_id .' ।  পার�?সেলটি ডেলিভারির জন�?য পূনরায় ডেলিভারি ম�?যান  নিয়োগ করা হয়েছে ('.$deliveryReschedule->deliveryMan->user->name.', '.$deliveryReschedule->deliveryMan->user->mobile.') । পার�?সেল পাঠিয়েছেন ('.$parcel->merchant->business_name.') পার�?সেলের পরিষোদ ম�?ল�?য ('.$parcel->cash_collection.') টাকা । ট�?র�?যাক কর�?ন:'.url('/').'  -'.settings()->name;
 
                 else:
                     $msg = 'Dear '.$parcel->customer_name.', Your  parcel with ID '.$parcel->tracking_id .'  is re-schedule  from ('.$parcel->merchant->business_name.') TK('.$parcel->cash_collection.') delivery man assign by '.$deliveryReschedule->deliveryMan->user->name.', '.$deliveryReschedule->deliveryMan->user->mobile.'. Track here:'.url('/').'  -'.settings()->name;
@@ -1209,7 +1209,7 @@ class ParcelRepository implements ParcelInterface {
 
             if($request->send_sms_customer == 'on'){
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
-                    $msg = 'প্রিয় '.$parcel->customer_name.', আমরা আইডি সহ একটি পার্সেল পেয়েছি , পার্সেল আইডি - '.$parcel->tracking_id .', পার্সেল পাঠিয়েছেন ('.$parcel->merchant->business_name.') এবং যত তাড়াতাড়ি সম্ভব বিতরণ করা হবে । ট্র্যাক করুন:'.url('/').'  -'.settings()->name;
+                    $msg = 'প�?রিয় '.$parcel->customer_name.', আমরা আইডি সহ �?কটি পার�?সেল পেয়েছি , পার�?সেল আইডি - '.$parcel->tracking_id .', পার�?সেল পাঠিয়েছেন ('.$parcel->merchant->business_name.') �?বং যত তাড়াতাড়ি সম�?ভব বিতরণ করা হবে । ট�?র�?যাক কর�?ন:'.url('/').'  -'.settings()->name;
                     $response =  app(SmsService::class)->sendSms($parcel->customer_phone,$msg);
                 else:
                     $msg = 'Dear '.$parcel->customer_name.', we received a parcel with ID '.$parcel->tracking_id .' from ('.$parcel->merchant->business_name.') and will deliver as soon as possible. Track here:'.url('/').'  -'.settings()->name;
@@ -1221,7 +1221,7 @@ class ParcelRepository implements ParcelInterface {
 
             if($request->send_sms_merchant  == 'on'){
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
-                    $msg = 'সম্মানিত '.$parcel->merchant->business_name.', আপনার পার্সেল '.$receivedWarehouse->hub->name.' হাবের ওয়্যারহাউসে গ্রহন করা হয়েছে , পার্সেল আইডি - '.$parcel->tracking_id .' ।  ট্র্যাক করুন: '.url('/').' -'.settings()->name;
+                    $msg = 'সম�?মানিত '.$parcel->merchant->business_name.', আপনার পার�?সেল '.$receivedWarehouse->hub->name.' হাবের ওয়�?যারহাউসে গ�?রহন করা হয়েছে , পার�?সেল আইডি - '.$parcel->tracking_id .' ।  ট�?র�?যাক কর�?ন: '.url('/').' -'.settings()->name;
                     $response =  app(SmsService::class)->sendSms($parcel->merchant->user->mobile,$msg);
                 else:
                     $msg = 'Dear '.$parcel->merchant->business_name.', your  parcel with ID '.$parcel->tracking_id .' Received to Warehouse '.$receivedWarehouse->hub->name .'. Track here: '.url('/').' -'.settings()->name;
@@ -1411,7 +1411,7 @@ class ParcelRepository implements ParcelInterface {
             DB::commit();
             if($request->send_sms == 'on'){
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
-                    $msg = 'সম্মানিত '.$parcel->merchant->business_name.', পার্সেল আইডি - '.$parcel->tracking_id .', আপনার পার্সেলটি ('.$returnassigntomerchant->deliveryMan->user->name.', '.$returnassigntomerchant->deliveryMan->user->mobile.') দ্বারা আপনার কাছে পূনরায়  পাঠানো হয়েছে  '.','.'পরিদর্শন করুন:'.url('/').'  -'.settings()->name;
+                    $msg = 'সম�?মানিত '.$parcel->merchant->business_name.', পার�?সেল আইডি - '.$parcel->tracking_id .', আপনার পার�?সেলটি ('.$returnassigntomerchant->deliveryMan->user->name.', '.$returnassigntomerchant->deliveryMan->user->mobile.') দ�?বারা আপনার কাছে পূনরায়  পাঠানো হয়েছে  '.','.'পরিদর�?শন কর�?ন:'.url('/').'  -'.settings()->name;
                 else:
                     $msg = 'Dear '.$parcel->merchant->business_name.', parcel with ID '.$parcel->tracking_id .' is return to you by '.$returnassigntomerchant->deliveryMan->user->name.', '.$returnassigntomerchant->deliveryMan->user->mobile.'. visit:'.url('/').'  -'.settings()->name;
                 endif;
@@ -1495,7 +1495,7 @@ class ParcelRepository implements ParcelInterface {
 
             if($request->send_sms == 'on'){
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
-                    $msg = 'প্রিয় '.$parcel->merchant->business_name.', পার্সেল আইডি -  '.$parcel->tracking_id.', আপনার পার্সেলটি পূনরায় ('.$returnassigntomerchant->deliveryMan->user->name.', '.$returnassigntomerchant->deliveryMan->user->mobile.') দ্বারা আপনার কাছে পাঠানো হয়েছে , পরিদর্শন করুন: '.url('/').'  -'.settings()->name;
+                    $msg = 'প�?রিয় '.$parcel->merchant->business_name.', পার�?সেল আইডি -  '.$parcel->tracking_id.', আপনার পার�?সেলটি পূনরায় ('.$returnassigntomerchant->deliveryMan->user->name.', '.$returnassigntomerchant->deliveryMan->user->mobile.') দ�?বারা আপনার কাছে পাঠানো হয়েছে , পরিদর�?শন কর�?ন: '.url('/').'  -'.settings()->name;
                 else:
                     $msg = 'Dear '.$parcel->merchant->business_name.', parcel with ID '.$parcel->tracking_id .' is return to you by '.$returnassigntomerchant->deliveryMan->user->name.', '.$returnassigntomerchant->deliveryMan->user->mobile.'. visit: '.url('/').'  -'.settings()->name;
                 endif;
@@ -1837,7 +1837,7 @@ class ParcelRepository implements ParcelInterface {
             if($request->send_sms_customer == 'on') {
 
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
-                    $msg = 'প্রিয় '.$parcel->customer_name.', আপনার পার্সেল আইডি - ' . $parcel->tracking_id . ' সফলভাবে বিতরণ করা হয়েছে । টাকা প্রদান করেছেন '.$parcel->cash_collection.' টাকা । আপনার অভিজ্ঞতা রেট করুন । পরিদর্শন করুন:' . url('/') . '  -'.settings()->name;
+                    $msg = 'প�?রিয় '.$parcel->customer_name.', আপনার পার�?সেল আইডি - ' . $parcel->tracking_id . ' সফলভাবে বিতরণ করা হয়েছে । টাকা প�?রদান করেছেন '.$parcel->cash_collection.' টাকা । আপনার অভিজ�?ঞতা রেট কর�?ন । পরিদর�?শন কর�?ন:' . url('/') . '  -'.settings()->name;
                 else:
                     $msg = 'Dear Customer, Your parcel with ID ' . $parcel->tracking_id . ' is successfully delivered. To rate your experience visit:' . url('/') . '  -'.settings()->name;
                 endif;
@@ -1846,7 +1846,7 @@ class ParcelRepository implements ParcelInterface {
             if($request->send_sms_merchant  == 'on'){
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
 
-                    $msg = 'সম্মানিত '.$parcel->merchant->business_name.', আপনার পার্সেল আইডি - '.$parcel->tracking_id .' সফলভাবে বিতরণ করা হয়েছে । ক্রেতা- '.$parcel->customer_name.', '.$parcel->customer_phone.' । এই পার্সেলটির ডেলিভারি ম্যান '.$parcel->cash_collection.' টাকা গ্রহন করেছেন । পরিদর্শন করুন: '.url('/').' -'.settings()->name;
+                    $msg = 'সম�?মানিত '.$parcel->merchant->business_name.', আপনার পার�?সেল আইডি - '.$parcel->tracking_id .' সফলভাবে বিতরণ করা হয়েছে । ক�?রেতা- '.$parcel->customer_name.', '.$parcel->customer_phone.' । �?ই পার�?সেলটির ডেলিভারি ম�?যান '.$parcel->cash_collection.' টাকা গ�?রহন করেছেন । পরিদর�?শন কর�?ন: '.url('/').' -'.settings()->name;
                 else:
                     $msg = 'Dear Merchant, your  parcel with ID '.$parcel->tracking_id .' is successfully delivered. Customer '.$parcel->customer_name.', '.$parcel->customer_phone.' Track here: '.url('/').' -'.settings()->name;
                 endif;
@@ -2049,7 +2049,7 @@ class ParcelRepository implements ParcelInterface {
 
             if(SmsSendSettingHelper(SmsSendStatus::DELIVERED_CANCEL_CUSTOMER)) {
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
-                    $msg = 'প্রিয় '.$parcel->customer_name.', আপনার পার্সেল আইডি - ' . $parcel->tracking_id . ' । '.$parcel->merchant->business_name.' থেকে বাতিল করা হবে । ট্র্যাক করুন: '.url('/').' -'.settings()->name;
+                    $msg = 'প�?রিয় '.$parcel->customer_name.', আপনার পার�?সেল আইডি - ' . $parcel->tracking_id . ' । '.$parcel->merchant->business_name.' থেকে বাতিল করা হবে । ট�?র�?যাক কর�?ন: '.url('/').' -'.settings()->name;
                 else:
                     $msg = 'Dear '.$parcel->customer_name.', Your parcel with ID ' . $parcel->tracking_id . ' from '.$parcel->merchant->business_name.'will be cancel. Track here: '.url('/').' -'.settings()->name;
                 endif;
@@ -2058,7 +2058,7 @@ class ParcelRepository implements ParcelInterface {
 
             if(SmsSendSettingHelper(SmsSendStatus::DELIVERED_CANCEL_MERCHANT)){
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
-                    $msg = 'প্রিয় '.$parcel->merchant->business_name.', আপনার পার্সেল আইডি - '.$parcel->tracking_id .' বিতরণ করা বাতিল । ক্রেতা - '.$parcel->customer_name.', '.$parcel->customer_phone.' ট্র্যাক করুন: '.url('/').' -'.settings()->name;
+                    $msg = 'প�?রিয় '.$parcel->merchant->business_name.', আপনার পার�?সেল আইডি - '.$parcel->tracking_id .' বিতরণ করা বাতিল । ক�?রেতা - '.$parcel->customer_name.', '.$parcel->customer_phone.' ট�?র�?যাক কর�?ন: '.url('/').' -'.settings()->name;
                 else:
                     $msg = 'Dear '.$parcel->merchant->business_name.', your  parcel with ID '.$parcel->tracking_id .'  Delivered cancel. Customer '.$parcel->customer_name.', '.$parcel->customer_phone.' Track here: '.url('/').' -'.settings()->name;
                 endif;
@@ -2287,7 +2287,7 @@ class ParcelRepository implements ParcelInterface {
 
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
 
-                    $msg = 'প্রিয় '.$parcel->customer_name.', আপনার পার্সেল আইডি - ' . $parcel->tracking_id . ' আংশিক বিতরণ করা হয় । টাকা প্রদান করুন ('.$parcel->cash_collection.') টাকা এবং আপনার অভিজ্ঞতা রেট করুন । পরিদর্শন করুন:' . url('/') . '  -'.settings()->name;
+                    $msg = 'প�?রিয় '.$parcel->customer_name.', আপনার পার�?সেল আইডি - ' . $parcel->tracking_id . ' আংশিক বিতরণ করা হয় । টাকা প�?রদান কর�?ন ('.$parcel->cash_collection.') টাকা �?বং আপনার অভিজ�?ঞতা রেট কর�?ন । পরিদর�?শন কর�?ন:' . url('/') . '  -'.settings()->name;
                 else:
                     $msg = 'Dear '.$parcel->customer_name.', Your parcel with ID ' . $parcel->tracking_id . '  is Partials Delivered please giving amount('.$parcel->cash_collection.') by  To rate your experience visit:' . url('/') . '  -'.settings()->name;
                 endif;
@@ -2297,7 +2297,7 @@ class ParcelRepository implements ParcelInterface {
             if($request->send_sms_merchant  == 'on'){
                 if(session()->has('locale') && session()->get('locale') == 'bn'):
 
-                    $msg = 'প্রিয় '.$parcel->merchant->business_name.', আপনার পার্সেল আইডি - '.$parcel->tracking_id .' আংশিক বিতরণ করা হয় । ক্রেতা '.$parcel->customer_name.', '.$parcel->customer_phone.' । এই পার্সেলটির ডেলিভারি ম্যান '.$parcel->cash_collection.' টাকা গ্রহন করেছেন । পরিদর্শন করুন: '.url('/').' -'.settings()->name;
+                    $msg = 'প�?রিয় '.$parcel->merchant->business_name.', আপনার পার�?সেল আইডি - '.$parcel->tracking_id .' আংশিক বিতরণ করা হয় । ক�?রেতা '.$parcel->customer_name.', '.$parcel->customer_phone.' । �?ই পার�?সেলটির ডেলিভারি ম�?যান '.$parcel->cash_collection.' টাকা গ�?রহন করেছেন । পরিদর�?শন কর�?ন: '.url('/').' -'.settings()->name;
                 else:
                     $msg = 'Dear '.$parcel->merchant->business_name.', your  parcel with ID '.$parcel->tracking_id .' is Partials Delivered. Customer '.$parcel->customer_name.', '.$parcel->customer_phone.' taking amount('.$parcel->cash_collection.')  Track here: '.url('/').' -'.settings()->name;
                 endif;
@@ -2720,7 +2720,7 @@ class ParcelRepository implements ParcelInterface {
                 $parcel->save();
                 if($request->send_sms_pickuman == 'on'){
                     if(session()->has('locale') && session()->get('locale') == 'bn'):
-                        $msg = 'প্রিয় '.$pickupAsisgn->pickupman->user->name.', '.dateFormat($parcel->pickup_date).' তারিখের মধ্যে '.'পার্সেল পিকআপ করুন । পার্সেল আইডি '.$parcel->tracking_id .' । পার্সেল পাঠিয়েছে ('.$parcel->merchant->business_name.','.$parcel->merchant->user->mobile.','.$parcel->merchant->address.') - '.settings()->name;
+                        $msg = 'প�?রিয় '.$pickupAsisgn->pickupman->user->name.', '.dateFormat($parcel->pickup_date).' তারিখের মধ�?যে '.'পার�?সেল পিকআপ কর�?ন । পার�?সেল আইডি '.$parcel->tracking_id .' । পার�?সেল পাঠিয়েছে ('.$parcel->merchant->business_name.','.$parcel->merchant->user->mobile.','.$parcel->merchant->address.') - '.settings()->name;
                     else:
                         $msg = 'Dear '.$pickupAsisgn->pickupman->user->name.', Please pickup parcel with ID '.$parcel->tracking_id .' parcel from ('.$parcel->merchant->business_name.','.$parcel->merchant->user->mobile.','.$parcel->merchant->address.') within '.dateFormat($parcel->pickup_date).' -'.settings()->name;
                     endif;
@@ -2734,7 +2734,7 @@ class ParcelRepository implements ParcelInterface {
                 }
                 if($request->send_sms_merchant  == 'on'){
                     if(session()->has('locale') && session()->get('locale') == 'bn'):
-                        $msg = 'সম্মানিত '.$parcel->merchant->business_name.',  আপনার পার্সেল আইডি -'.$parcel->tracking_id .' । '.settings()->name.' থেকে পিকআপ ম্যান নিয়োগ করা হয়েছে । প্রয়োজনে  পিকআপ ম্যান এর সাথে যোগাযোগ করুন । নিয়োগ দিয়েছেন '.$pickupAsisgn->pickupman->user->name.', '.$pickupAsisgn->pickupman->user->mobile.' । ট্র্যাক করুন: '.url('/').' -'.settings()->name;
+                        $msg = 'সম�?মানিত '.$parcel->merchant->business_name.',  আপনার পার�?সেল আইডি -'.$parcel->tracking_id .' । '.settings()->name.' থেকে পিকআপ ম�?যান নিয়োগ করা হয়েছে । প�?রয়োজনে  পিকআপ ম�?যান �?র সাথে যোগাযোগ কর�?ন । নিয়োগ দিয়েছেন '.$pickupAsisgn->pickupman->user->name.', '.$pickupAsisgn->pickupman->user->mobile.' । ট�?র�?যাক কর�?ন: '.url('/').' -'.settings()->name;
                     else:
                         $msg = 'Dear '.$parcel->merchant->business_name.', your  parcel with ID '.$parcel->tracking_id .' Pickup man assign from '.settings()->name.'. Assign by'.$pickupAsisgn->pickupman->user->name.', '.$pickupAsisgn->pickupman->user->mobile.' Track here: '.url('/').' -'.settings()->name;
                     endif;
@@ -2792,7 +2792,7 @@ class ParcelRepository implements ParcelInterface {
                 DB::commit();
                 if($request->send_sms == 'on'){
                     if(session()->has('locale') && session()->get('locale') == 'bn'):
-                        $msg = 'সম্মানিত '.$parcel->merchant->business_name.', পার্সেল আইডি - '.$parcel->tracking_id .',  আপনার পার্সেলটি ('.$returnassigntomerchant->deliveryMan->user->name.', '.$returnassigntomerchant->deliveryMan->user->mobile.') দ্বারা আপনার কাছে পূনরায় পাঠানো হয়েছে '.','.'পরিদর্শন করুন:'.url('/').'  -'.settings()->name;
+                        $msg = 'সম�?মানিত '.$parcel->merchant->business_name.', পার�?সেল আইডি - '.$parcel->tracking_id .',  আপনার পার�?সেলটি ('.$returnassigntomerchant->deliveryMan->user->name.', '.$returnassigntomerchant->deliveryMan->user->mobile.') দ�?বারা আপনার কাছে পূনরায় পাঠানো হয়েছে '.','.'পরিদর�?শন কর�?ন:'.url('/').'  -'.settings()->name;
                     else:
                         $msg = 'Dear '.$parcel->merchant->business_name.', parcel with ID '.$parcel->tracking_id .' is return to you by '.$returnassigntomerchant->deliveryMan->user->name.', '.$returnassigntomerchant->deliveryMan->user->mobile.'. visit:'.url('/').'  -'.settings()->name;
                     endif;

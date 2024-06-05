@@ -26,6 +26,7 @@ class StoreRequest extends FormRequest {
             return [
                 'distance_type' => ['required'],
                 'distance' => ['required', 'numeric'],
+                'distance_charge' => ['required', 'numeric'],
                 'position' => ['required', 'numeric'],
                 'status' => ['required', 'numeric'],
             ];
@@ -43,7 +44,7 @@ class StoreRequest extends FormRequest {
                 ];
             } else {
                 return [
-                    'category' => ['required', 'numeric', 'unique:delivery_charges,category_id'],
+                    'category' => ['required', 'numeric'],
                     'same_day' => ['required', 'numeric',],
                     'next_day' => ['required', 'numeric',],
                     'sub_city' => ['required', 'numeric',],

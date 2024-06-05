@@ -15,9 +15,9 @@
                     class="fa fa-comments"></i>{{ __('menus.support') }}</a>
         </li>
 
-        <li class="nav-item ">
+        <!--<li class="nav-item ">
             <a class="nav-link {{ (request()->is('merchant/my-wallet*')) ? 'active' : '' }}" href="{{route('merchant-panel.my.wallet.index')}}"><i class="fa fa-wallet"></i>{{ __('parcel.my_wallet') }}</a>
-        </li>
+        </li>-->
 
         <li class="nav-item">
             <a class="nav-link {{ request()->is('merchant/payment-request*', 'merchant/invoice*', 'merchant/payment/received*', 'merchant/online-payment*', 'merchant/invoice*') ? 'active' : '' }}"
